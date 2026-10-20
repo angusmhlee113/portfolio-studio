@@ -22,15 +22,15 @@ Builds export static files to `out/`. `npm start` previews those files locally. 
 
 ## Edit
 
-- `components/Portfolio.tsx`: page content, project artwork, theme controls and reduced-motion support.
+- `components/Portfolio.tsx`: page content, experience and education sections, theme controls and reduced-motion support.
 - `components/Studio.tsx`: SVG studio and avatar, greeting and pointer interaction.
 - `components/useWalker.ts`: walking route, limb animation, animation lifecycle cleanup.
 - `components/DetailDialog.tsx`: accessible native modal and focus handling.
-- `lib/content.ts`: sample project descriptions and contact placeholder.
+- `lib/content.ts`: experience and education entries, plus the contact placeholder.
 - `app/globals.css`: responsive layout, themes, animation and focus styles.
 - `app/layout.tsx`: page title and description.
 
-The avatar is animated SVG, not a WebGL model. Project descriptions, biography, and contact action are illustrative placeholders. Google Fonts load in the browser; fallback fonts work offline. No API keys, database, or environment variables are required.
+The avatar is animated SVG, not a WebGL model. Work experience, education, and contact details are explicitly marked placeholders. Google Fonts load in the browser; fallback fonts work offline. No API keys, database, or environment variables are required.
 
 `npm run typecheck` checks TypeScript. Reduced motion pauses walking and disables CSS animation; mouse clicks do not show the avatar focus ring, while keyboard navigation does.
 
