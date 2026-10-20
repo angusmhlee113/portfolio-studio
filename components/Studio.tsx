@@ -237,6 +237,12 @@ export default function Studio({ paused }: { paused: boolean }) {
               />
               <ellipse cx="359" cy="255" rx="2.5" ry="3.5" fill="#3d382f" />
               <ellipse cx="380" cy="255" rx="2.5" ry="3.5" fill="#3d382f" />
+              {/* Glasses follow the head through walking, turning, and waving. */}
+              <g fill="none" stroke="#353d35" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="349" y="247" width="18" height="17" rx="6" fill="#eef5e3" fillOpacity=".12" />
+                <rect x="372" y="247" width="18" height="17" rx="6" fill="#eef5e3" fillOpacity=".12" />
+                <path d="M367 253Q369.5 251 372 253M349 251 341 248M390 251 394 248" />
+              </g>
               <path
                 d="M364 270Q370 275 377 268"
                 fill="none"
