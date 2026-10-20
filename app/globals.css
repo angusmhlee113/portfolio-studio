@@ -159,6 +159,7 @@ h1 em:after {
 }
 .actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 25px;
   margin-top: 31px;
@@ -173,8 +174,26 @@ h1 em:after {
   gap: 25px;
 }
 .secondary {
-  border-bottom: 1px solid var(--line);
-  padding: 10px 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #252a26;
+  border: 1px solid #64714d;
+  border-radius: 30px;
+  padding: 14px 21px;
+  font-weight: 600;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.secondary:hover {
+  box-shadow: 0 3px 0 #64714d;
+  transform: translateY(-2px);
+}
+.secondary:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
 .scene-shell {
   position: relative;
@@ -193,26 +212,6 @@ h1 em:after {
   border-radius: 50%;
   background: radial-gradient(ellipse, var(--panel), transparent 70%);
   z-index: -1;
-}
-.scene-caption {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 9px;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.3px;
-}
-.scene-label {
-  position: absolute;
-  top: 12%;
-  right: 7%;
-  font-size: 10px;
-  transform: rotate(7deg);
-  border: 1px solid var(--line);
-  background: var(--card);
-  padding: 10px 14px;
-  border-radius: 8px;
 }
 .studio-controls {
   display: flex;
@@ -684,7 +683,99 @@ dialog button {
   .theme {
     padding: 8px;
   }
-  .scene-label {
-    top: 14%;
+}
+
+/* Professional background */
+.section-dot {
+  color: #9ba581;
+}
+.resume-section + .resume-section {
+  border-top: 1px solid var(--line);
+}
+.resume-note {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  margin: -10px 0 32px;
+}
+.resume-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.resume-entry {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) 2fr;
+  gap: 40px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+}
+.resume-period {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  padding-top: 4px;
+}
+.resume-details h3 {
+  font:
+    500 24px "Space Grotesk",
+    sans-serif;
+  letter-spacing: -0.6px;
+  margin: 0 0 8px;
+}
+.resume-details p,
+.resume-highlights {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--muted);
+  max-width: 650px;
+}
+.resume-details .resume-organization {
+  color: var(--ink);
+  font-size: 12px;
+  margin: 0 0 18px;
+}
+.resume-highlights {
+  padding-left: 18px;
+  margin-bottom: 0;
+}
+.resume-highlights li + li {
+  margin-top: 6px;
+}
+@media (max-width: 600px) {
+  .resume-entry {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 26px 0;
   }
+  .resume-section .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .resume-details h3 {
+    font-size: 22px;
+  }
+}
+
+.avatar-bubble path {
+  fill: var(--card);
+  stroke: var(--ink);
+  stroke-width: 1.25;
+}
+.avatar-bubble text {
+  fill: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.avatar-bubble .daydream-icon path,
+.avatar-bubble .daydream-icon circle {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

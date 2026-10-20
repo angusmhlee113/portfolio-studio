@@ -3,7 +3,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Angus — A little world of ideas",
   description:
-    "A playful interactive portfolio concept for Angus. Sample work and placeholder biography.",
+    "A playful interactive portfolio concept for Angus. Work experience, education, and an animated studio avatar.",
 };
 export default function RootLayout({
   children,
