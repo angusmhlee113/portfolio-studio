@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Studio from "./Studio";
 import DetailDialog from "./DetailDialog";
-import { projects, contact, type Detail } from "../lib/content";
+import { experience, education, contact, type Detail } from "../lib/content";
 
 export default function Portfolio() {
   const [theme, setTheme] = useState("day");
@@ -34,8 +34,8 @@ export default function Portfolio() {
             angus<span>✳</span>
           </a>
           <nav aria-label="Main navigation">
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
             <a href="#contact">Say hello ↗</a>
           </nav>
           <div className="status">
@@ -57,15 +57,19 @@ export default function Portfolio() {
                 the ideas I explore, and whatever comes next.
               </p>
               <div className="actions">
-                <a className="primary" href="#work">
-                  Explore my work <span>↘</span>
+                <a className="primary" href="#experience">
+                  View my experience <span>↘</span>
                 </a>
-                <a className="secondary" href="#about">
-                  A bit about me ↗
+                <a className="secondary" href="#education">
+                  My education ↗
                 </a>
               </div>
             </div>
-            <Studio paused={paused} />
+            <Studio
+              paused={paused}
+              night={theme === "night"}
+              daydream={theme === "lilac"}
+            />
           </div>
           <div className="studio-controls">
             <span>A small space. Endless possibilities.</span>
@@ -82,7 +86,7 @@ export default function Portfolio() {
                 onClick={() => setTheme("night")}
                 aria-pressed={theme === "night"}
               >
-                <i style={{ background: "#536b66" }}></i>After hours
+                <i style={{ background: "#536b66" }}></i>Night
               </button>
               <button
                 className="theme"
@@ -93,116 +97,61 @@ export default function Portfolio() {
               </button>
             </div>
           </div>
-          <section id="work">
+          <section
+            className="resume-section"
+            id="experience"
+            aria-labelledby="experience-heading"
+          >
             <div className="section-heading">
-              <h2>
-                A few things I’ve imagined
-                <span style={{ color: "#9ba581", fontSize: "30px" }}>.</span>
+              <h2 id="experience-heading">
+                Work Experience<span className="section-dot">.</span>
               </h2>
-              <span>01 — SELECTED CONCEPTS</span>
+              <span>01 — MY PROFESSIONAL JOURNEY</span>
             </div>
-            <div className="projects">
-              <button
-                className="project"
-                onClick={() => setDetail(projects.grove)}
-              >
-                <div className="project-art">
-                  <div className="mock-browser">
-                    <div className="browser-bar">•••</div>
-                    <div className="mock-content">
-                      <div className="mock-brand">
-                        grove<span>Find your green ↗</span>
-                      </div>
-                      <div className="mock-title">
-                        A little green.
-                        <br />A better everyday.
-                      </div>
-                      <span className="mock-tag">Meet your next plant ↗</span>
-                    </div>
+            <ol className="resume-list">
+              {experience.map((entry) => (
+                <li className="resume-entry" key={entry.id}>
+                  <div className="resume-period">{entry.period}</div>
+                  <div className="resume-details">
+                    <h3>{entry.title}</h3>
+                    <p className="resume-organization">{entry.organization}</p>
+                    <p>{entry.description}</p>
+                    <ul className="resume-highlights">
+                      {entry.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
                   </div>
-                  <div className="mock-plant" aria-hidden="true">
-                    🌱
-                  </div>
-                </div>
-                <div className="project-info">
-                  <div>
-                    <h3>Grove — Room to grow</h3>
-                    <p>Sample concept · Web design / Digital experience</p>
-                  </div>
-                  <span className="arrow">↗</span>
-                </div>
-              </button>
-              <button
-                className="project"
-                onClick={() => setDetail(projects.tempo)}
-              >
-                <div className="project-art">
-                  <div className="orbit"></div>
-                  <div className="orbit"></div>
-                  <div className="phone">
-                    <div className="phone-notch"></div>
-                    <small>MONDAY, AT YOUR PACE</small>
-                    <h4>
-                      Find your
-                      <br />
-                      own rhythm.
-                    </h4>
-                    <div className="mood">
-                      <span>☀</span>
-                      <span>◔</span>
-                      <span>☁</span>
-                      <span>✳</span>
-                    </div>
-                    <div className="phone-chart">
-                      <i style={{ height: "30%" }}></i>
-                      <i style={{ height: "60%" }}></i>
-                      <i style={{ height: "48%" }}></i>
-                      <i style={{ height: "80%" }}></i>
-                      <i style={{ height: "65%" }}></i>
-                      <i style={{ height: "90%" }}></i>
-                      <i style={{ height: "72%" }}></i>
-                    </div>
-                    <div className="phone-footer">
-                      A little progress is still progress. ↗
-                    </div>
-                  </div>
-                </div>
-                <div className="project-info">
-                  <div>
-                    <h3>Tempo — A gentler routine</h3>
-                    <p>Sample concept · Product design / Mobile app</p>
-                  </div>
-                  <span className="arrow">↗</span>
-                </div>
-              </button>
-            </div>
+                </li>
+              ))}
+            </ol>
           </section>
-          <section className="about" id="about">
-            <div>
-              <div className="eyebrow" style={{ marginBottom: "20px" }}>
-                Beyond the screen
-              </div>
-              <h2>
-                A curious mind.
-                <br />A work in progress.
+          <section
+            className="resume-section"
+            id="education"
+            aria-labelledby="education-heading"
+          >
+            <div className="section-heading">
+              <h2 id="education-heading">
+                Education<span className="section-dot">.</span>
               </h2>
+              <span>02 — WHERE I LEARNED</span>
             </div>
-            <div>
-              <p>
-                This is where your story goes: what you love making, how you
-                approach a challenge, and the small things that make you, you. A
-                few honest sentences will say more than a long list of
-                buzzwords.
-              </p>
-              <div className="tags">
-                <span>Your craft</span>
-                <span>Your interests</span>
-                <span>Something unexpected</span>
-              </div>
-              <p style={{ fontSize: "10px", marginTop: "20px" }}>
-                Draft biography · personalize with your own story
-              </p>
-            </div>
+            <p className="resume-note">
+              Placeholder entry · add your school, qualification, and dates.
+            </p>
+            <ol className="resume-list">
+              {education.map((entry) => (
+                <li className="resume-entry" key={entry.id}>
+                  <div className="resume-period">{entry.period}</div>
+                  <div className="resume-details">
+                    <h3>{entry.title}</h3>
+                    <p className="resume-organization">{entry.organization}</p>
+                    <p>{entry.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </section>
           <section className="contact" id="contact">
             <div>
@@ -223,7 +172,9 @@ export default function Portfolio() {
         </main>
         <footer className="footer">
           <span>angus✳ &nbsp; A little world, made with care.</span>
-          <span>Portfolio concept · Illustrative projects & avatar</span>
+          <span>
+            Portfolio draft · Experience, education & a little personality
+          </span>
         </footer>
       </div>
       <DetailDialog detail={detail} onClose={() => setDetail(null)} />
